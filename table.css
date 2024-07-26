@@ -1,0 +1,119 @@
+/* General container styles */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Table styles */
+.data-table {
+    width: 100%;
+    background: linear-gradient(to right, #7F7FD5, #91EAE4);
+    color: #333;
+    border-collapse: collapse;
+    overflow-x: auto;
+    border: 2px solid #ccc;
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table th {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+}
+
+/* Modal styles */
+#profileModal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 80%;
+    max-width: 600px;
+    overflow-y: auto;
+    font-family: Arial, sans-serif;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #555;
+}
+
+#modalText {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 20px 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Custom button styles */
+.view-profile-button {
+    background-image: linear-gradient(to right, #7F7FD5, #91EAE4);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-image 0.3s ease;
+}
+
+.view-profile-button:hover {
+    background-image: linear-gradient(to right, #0056b3, #0083b0);
+}
+
+.view-profile-button:active {
+    background-image: linear-gradient(to right, #004578, #006699);
+}
+
+/* Search bar styling */
+#searchBar {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    background: linear-gradient(to right, #7F7FD5, #91EAE4);
+    color: #333;
+    width: 100%;
+    margin-top: 10px;
+}
