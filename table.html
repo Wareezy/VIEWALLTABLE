@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheet Data Display</title>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="searchBar" placeholder="Search...">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Cohort</th>
+                    <th>Learning Journey</th>
+                    <th>Module</th>
+                </tr>
+            </thead>
+            <tbody id="data-body">
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <div id="profileModal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>User Information</h2>
+            <p id="modalText">User Information Will Be Displayed Here</p>
+        </div>
+    </div>
+    <script src="table.js"></script>
+</body>
+</html>
