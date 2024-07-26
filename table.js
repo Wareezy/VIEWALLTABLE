@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const row = document.createElement('tr');
 
                 // Only include the columns you want to display
-                const columnsToInclude = ['First Name', 'Last Name', 'Cohort', 'Learning Journey', 'Module']; // Excluding 'Email' and 'Password'
+                const columnsToInclude = ['Firstname', 'Lastname', 'Cohort', 'Journey', 'Module']; // Excluding 'Email' and 'Password'
                 columnsToInclude.forEach((column) => {
                     if (item[column] !== undefined) {
                         const cell = document.createElement('td');
@@ -36,21 +36,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 buttonCell.appendChild(viewProfileButton);
                 row.appendChild(buttonCell);
 
+
                 viewProfileButton.addEventListener('click', function() {
                     const modalText = document.getElementById('modalText');
                     modalText.innerHTML = '';
-                    Object.entries(item).forEach(([key, value]) => {
+                    
+                    // Retrieve the date and other fields from the item
+                    const itemData = {
+                        'Firstname': item['Firstname'] || '',
+                        'Lastname': item['Lastname'] || '',
+                        'Cohort': item['Cohort'] || '',
+                        'Journey': item['Journey'] || '',
+                        'Module': item['Module'] || '',
+                        'Email': item['Email'] || '',
+                        'Password': item['Password'] || '',
+                    };
+                    
+                    Object.entries(itemData).forEach(([key, value]) => {
                         const p = document.createElement('p');
-                        p.textContent = `${key}: ${value}`;
+                        p.className = `modal-field ${key}`;
+                        p.innerHTML = `<strong>${key}:</strong> ${value}`;
                         modalText.appendChild(p);
                     });
-
+                    
                     document.getElementById('profileModal').style.display = 'block';
-
+                
                     document.querySelector('.close').addEventListener('click', function() {
                         document.getElementById('profileModal').style.display = 'none';
                     });
+                
+                    document.getElementById('modalButton').addEventListener('click', function() {
+                        alert('Button inside modal clicked!');
+                    });
                 });
+                
+
 
                 tbody.appendChild(row);
                 allRows.push(row);
