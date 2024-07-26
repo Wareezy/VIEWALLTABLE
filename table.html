@@ -9,6 +9,16 @@
 <body>
     <div class="container">
         <input type="text" id="searchBar" placeholder="Search...">
+        <select id="cohortFilter">
+            <option value="">All Cohorts</option>
+        </select>
+        <select id="learningJourneyFilter">
+            <option value="">All Learning Journeys</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Software">Software</option>
+            <option value="Networking">Networking</option>
+        </select>
         <table class="data-table">
             <thead>
                 <tr>
@@ -17,6 +27,7 @@
                     <th>Cohort</th>
                     <th>Learning Journey</th>
                     <th>Module</th>
+                    <th>Profile</th>
                 </tr>
             </thead>
             <tbody id="data-body">
