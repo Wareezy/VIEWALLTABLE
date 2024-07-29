@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fetch data
-    fetch("https://sheetdb.io/api/v1/13o2nnci5qfks")
+    fetch("https://sheetdb.io/api/v1/d34gyoluzq8yb")
         .then(response => response.json())
         .then(data => {
             const tbody = document.getElementById('data-body');
@@ -49,15 +49,39 @@ document.addEventListener('DOMContentLoaded', function() {
                         'Journey': item['Journey'] || '',
                         'Module': item['Module'] || '',
                         'Email': item['Email'] || '',
-                        'Password': item['Password'] || '',
+                        // 'Password': item['Password'] || '',
                     };
+
+                    // Made use of a spread operator to push every object into array uniquely
+                    const userArray = [
+                        { ...itemData }
+                    ]
                     
-                    Object.entries(itemData).forEach(([key, value]) => {
-                        const p = document.createElement('p');
-                        p.className = `modal-field ${key}`;
-                        p.innerHTML = `<strong>${key}:</strong> ${value}`;
-                        modalText.appendChild(p);
-                    });
+                    // Object.entries(itemData).forEach(([key, value]) => {
+                    //     const p = document.createElement('p');
+                    //     p.className = `modal-field ${key}`;
+                    //     p.innerHTML = `<strong>${key}:</strong> ${value}`;
+                    //     modalText.appendChild(p);
+                    // });
+
+                    const className = 'user-data-view'
+
+                    userArray.map((idx, index) => {
+                        const createdElem = document.createElement('div')
+                        createdElem.innerHTML += `
+                        <div key='${Math.random(index).toFixed(2)}' class='${className}'> <!-- creates a random new key for each student in cohort -->
+                            ${idx.Firstname}
+                            ${idx.Lastname}
+                            ${idx.Cohort}
+                            ${idx.Journey}
+                            ${idx.Module}
+                            ${idx.Email}
+                        </div>
+                        `
+                        modalText.appendChild(createdElem)
+                    })
+
+                    // console.log(y)
                     
                     document.getElementById('profileModal').style.display = 'block';
                 
