@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fetch data
-    fetch("https://sheetdb.io/api/v1/d34gyoluzq8yb")
+    fetch("https://api.sheety.co/fb7b0a64d321e1a7a621630c9009fd2c/wcs/sheet1")
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             const tbody = document.getElementById('data-body');
             const cohortFilter = document.getElementById('cohortFilter');
             const learningJourneyFilter = document.getElementById('learningJourneyFilter');
@@ -13,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get unique cohorts for the dropdown
             const cohorts = new Set();
 
-            data.forEach(item => {
+            data.sheet1.forEach(item => {
                 cohorts.add(item.Cohort);
 
                 const row = document.createElement('tr');
 
                 // Only include the columns you want to display
-                const columnsToInclude = ['Firstname', 'Lastname', 'Cohort', 'Journey', 'Module']; // Excluding 'Email' and 'Password'
+                const columnsToInclude = ['firstname', 'lastname', 'cohort', 'journey', 'module'];
                 columnsToInclude.forEach((column) => {
                     if (item[column] !== undefined) {
                         const cell = document.createElement('td');
@@ -43,12 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Retrieve the date and other fields from the item
                     const itemData = {
-                        'Firstname': item['Firstname'] || '',
-                        'Lastname': item['Lastname'] || '',
-                        'Cohort': item['Cohort'] || '',
-                        'Journey': item['Journey'] || '',
-                        'Module': item['Module'] || '',
-                        'Email': item['Email'] || '',
+                        'Firstname': item['firstname'] || '',
+                        'Lastname': item['lastname'] || '',
+                        'Cohort': item['cohort'] || '',
+                        'Journey': item['journey'] || '',
+                        'Module': item['module'] || '',
+                        'Email': item['email'] || '',
                         // 'Password': item['Password'] || '',
                     };
 
@@ -64,25 +65,47 @@ document.addEventListener('DOMContentLoaded', function() {
                     //     modalText.appendChild(p);
                     // });
 
-                    const className = 'user-data-view'
+                    const className = 'user-data-view';
+                    const imageClassName = 'img-img-placeholder';
+                    const bannerClass = 'lc-banner'
 
                     userArray.map((idx, index) => {
                         const createdElem = document.createElement('div')
                         createdElem.innerHTML += `
-                        <div key='${Math.random(index).toFixed(2)}' class='${className}'> <!-- creates a random new key for each student in cohort -->
-                            ${idx.Firstname}
-                            ${idx.Lastname}
-                            ${idx.Cohort}
-                            ${idx.Journey}
-                            ${idx.Module}
-                            ${idx.Email}
+                        <!-- creates a random new key for each student in cohort -->
+                        <div key='${Math.random(index).toFixed(2)}' class='${className}'> 
+                            <div class="${bannerClass}">
+                                <div class="inner-banner">
+                                    <img class="${imageClassName}" src="https://cdn-images.imagevenue.com/c5/24/95/ME18U3KN_o.png" alt="${idx.Firstname}" />
+                                    <h1 class="firstname">${idx.Firstname} ${idx.Lastname}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-ui">
+                        
+                            <div class="grid-col-vh-left">
+                                vh
+                            </div>
+
+                            <div class="grid-l-50">
+                                <div class="grid-col-top-right">
+                                tp
+                                </div>
+                                <div class="grid-col-bottom-right">
+                                bt
+                                </div>
+                            </div>
                         </div>
                         `
                         modalText.appendChild(createdElem)
                     })
 
                     // console.log(y)
-                    
+                    // ${idx.Lastname}
+                    // ${idx.Cohort}
+                    // ${idx.Journey}
+                    // ${idx.Module}
+                    // ${idx.Email}
                     document.getElementById('profileModal').style.display = 'block';
                 
                     document.querySelector('.close').addEventListener('click', function() {
@@ -154,3 +177,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error:', error));
 });
+
+
+
+// let url = 'https://api.sheety.co/fb7b0a64d321e1a7a621630c9009fd2c/wcs/sheet1';
+// fetch(url)
+// .then((response) => response.json())
+// .then(json => {
+//   // Do something with the data
+//   console.log(json.data);
+// });
